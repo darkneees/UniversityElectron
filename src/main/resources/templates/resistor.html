@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="index.html :: headerfiles">
+    <meta charset="UTF-8">
+    <title>Резисторы</title>
+</head>
+<body>
+
+<header th:insert="index.html :: header"></header>
+
+<div class="container">
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th th:each="e : ${enum}" th:text="${e.getTitle()}" scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${tableComponents != null}" th:each="elem: ${tableComponents}" >
+        <th th:text="${elem.id}"/>
+        <th th:text="${elem.name}"/>
+        <th th:text="${elem.resistor_value}"/>
+        <th th:text="${elem.package_frame}"/>
+        <th th:text="${elem.amount}"/>
+        <th th:text="${elem.note}"/>
+        <th th:text="${elem.box}"/>
+        <th>
+            <span>
+                <button class="custom-button take-button">-</button>
+                <button class="custom-button pick-button">+</button>
+            </span>
+        </th>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>

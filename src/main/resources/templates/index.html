@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="headerfiles">
+    <link media="all" type="text/css" th:href="@{styles/bootstrap.css}" rel="stylesheet"/>
+    <link th:href="@{styles/index.css}" rel="stylesheet"/>
+    <script th:src="@{js/index.js}"></script>
+    <meta charset="UTF-8">
+    <title>Электрические компоненты</title>
+</head>
+<body>
+
+    <header th:fragment="header">
+        <span class="main-title my-container">
+
+        <div class="dropdown">
+            <button onclick="myFunction()" class="dropbtn">Компоненты</button>
+            <div id="myDropdown" class="dropdown-content">
+                <a th:each="c : ${components}" th:href="${c.key}" th:text="${c.name}"/>
+            </div>
+        </div>
+        <form>
+            <input type="text" id="item-search" name="item=search" placeholder="Введите название предмета">
+        </form>
+        <a class="btn custom-button add-button">Добавить компонент</a>
+        <a class="btn custom-button remove-button">Удалить компонент</a>
+
+        </span>
+    </header>
+</body>
+</html>
