@@ -1,39 +1,74 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:insert="index.html :: headerfiles">
+<head th:fragment="headerfiles">
+    <link media="all" type="text/css" th:href="@{styles/bootstrap.css}" rel="stylesheet"/>
+    <link th:href="@{styles/index.css}" rel="stylesheet"/>
+    <script th:src="@{js/index.js}"></script>
     <meta charset="UTF-8">
-    <title>Резисторы</title>
+    <title>Электрические компоненты</title>
 </head>
 <body>
 
-<header th:insert="index.html :: header"></header>
+    <header th:fragment="header">
+        <span class="main-title my-container">
 
-<div class="container">
-  <table class="table table-hover">
-    <thead>
-    <tr>
-      <th th:each="e : ${enum}" th:text="${e.getTitle()}" scope="col"></th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:if="${tableComponents != null}" th:each="elem: ${tableComponents}" >
-        <th th:text="${elem.id}"/>
-        <th th:text="${elem.name}"/>
-        <th th:text="${elem.resistor_value}"/>
-        <th th:text="${elem.package_frame}"/>
-        <th th:text="${elem.amount}"/>
-        <th th:text="${elem.note}"/>
-        <th th:text="${elem.box}"/>
-        <th>
-            <span>
-                <button class="custom-button take-button">-</button>
-                <button class="custom-button pick-button">+</button>
-            </span>
-        </th>
-    </tr>
-    </tbody>
-  </table>
-</div>
+        <div class="dropdown">
+            <button onclick="myFunction()" class="dropbtn">Компоненты</button>
+            <div id="myDropdown" class="dropdown-content">
+                <a th:each="c : ${typeComponents}" th:href="${c.key}" th:text="${c.name}"/>
+            </div>
+        </div>
+        <form>
+            <input type="text" id="item-search" name="item=search" placeholder="Введите название предмета">
+        </form>
+        <a class="btn custom-button add-button">Добавить компонент</a>
+        <a class="btn custom-button remove-button">Удалить компонент</a>
 
+        </span>
+    </header>
+
+    <div class="container">
+            <table class="table table-hover">
+                <thead>
+                <tr th:if="${!components.isEmpty() && components != null}">
+                    <th th:if="${components[0].id != null}" th:text="${enum.get('id')}" scope="col"></th>
+                    <th th:if="${components[0].name != null}" th:text="${enum.get('name')}" scope="col"></th>
+                    <th th:if="${components[0].value != null}" th:text="${enum.get('value')}" scope="col"></th>
+                    <th th:if="${components[0].voltage != null}" th:text="${enum.get('voltage')}" scope="col"></th>
+                    <th th:if="${components[0].current != null}" th:text="${enum.get('current')}" scope="col"></th>
+                    <th th:if="${components[0].forward_voltage != null}" th:text="${enum.get('forward_voltage')}" scope="col"></th>
+                    <th th:if="${components[0].back_voltage != null}" th:text="${enum.get('back_voltage')}" scope="col"></th>
+                    <th th:if="${components[0].channel != null}" th:text="${enum.get('channel')}" scope="col"></th>
+                    <th th:if="${components[0].amount != null}" th:text="${enum.get('amount')}" scope="col"></th>
+                    <th th:if="${components[0].package_name != null}" th:text="${enum.get('package')}" scope="col"></th>
+                    <th th:text="${enum.get('note')}" scope="col"></th>
+                    <th th:if="${components[0].box != null}" th:text="${enum.get('box')}" scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:if="${!components.isEmpty() && components != null}" th:each="elem: ${components}" >
+                    <th th:if="${elem.id != null}" th:text="${elem?.id}"/>
+                    <th th:if="${elem.name != null}"  th:text="${elem?.name}"/>
+                    <th th:if="${elem.value != null}"  th:text="${elem?.value}"/>
+                    <th th:if="${elem.voltage != null}"  th:text="${elem?.voltage}"/>
+                    <th th:if="${elem.current != null}"  th:text="${elem?.current}"/>
+                    <th th:if="${elem.forward_voltage != null}"  th:text="${elem?.forward_voltage}"/>
+                    <th th:if="${elem.back_voltage != null}" th:text="${elem?.back_voltage}"/>
+                    <th th:if="${elem.channel != null}" th:text="${elem?.channel}"/>
+                    <th th:if="${elem.type != null}" th:text="${elem?.type}"/>
+                    <th th:if="${elem.amount != null}" th:text="${elem?.amount}"/>
+                    <th th:if="${elem.package_name != null}" th:text="${elem?.package_name}"/>
+                    <th th:if="${elem.note != null}" th:text="${elem?.note}"/>
+                    <th th:if="${elem.box != null}" th:text="${elem?.box}"/>
+                    <th>
+                <span>
+                    <button class="custom-button take-button">-</button>
+                    <button class="custom-button pick-button">+</button>
+                </span>
+                    </th>
+                </tr>
+                </tbody>
+            </table>
+    </div>
 </body>
 </html>

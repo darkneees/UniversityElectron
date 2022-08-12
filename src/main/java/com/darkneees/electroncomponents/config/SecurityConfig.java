@@ -1,9 +1,7 @@
 package com.darkneees.electroncomponents.config;
 
 import com.darkneees.electroncomponents.entity.User;
-import com.darkneees.electroncomponents.repository.UserRepository;
 import com.darkneees.electroncomponents.service.user.UserServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

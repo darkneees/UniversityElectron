@@ -6,8 +6,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Components")
-public class Components {
+@Table(name = "TypeComponents")
+public class TypeComponent {
 
     @Id
     @Column(name = "key_name")
@@ -16,10 +16,10 @@ public class Components {
     @Column(name = "name")
     private String name;
 
-    public Components() {
+    public TypeComponent() {
     }
 
-    public Components(String key, String name) {
+    public TypeComponent(String key, String name) {
         this.key = key;
         this.name = name;
     }
@@ -40,11 +40,4 @@ public class Components {
         this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return "Components{" +
-                "key='" + key + '\'' +
-                ", name='" + name + '\'' +
-                '}';
-    }
 }
