@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "TypeComponents")
+@Table(name = "type_components")
 public class TypeComponent {
 
     @Id

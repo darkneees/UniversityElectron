@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:insert="header.html :: headerfiles"/>
+    <title>Конденсаторы</title>
+</head>
+<body>
+
+<header th:insert="header.html :: header"></header>
+
+<div class="container">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">№</th>
+            <th scope="col">Наименование</th>
+            <th scope="col">Номинал</th>
+            <th scope="col">Напряжение</th>
+            <th scope="col">Типоразмер</th>
+            <th scope="col">Количество</th>
+            <th scope="col">Примечание</th>
+            <th scope="col">Секция</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="elem: ${components}" >
+            <th th:text="${elem.id}"/>
+            <th th:text="${elem.name}"/>
+            <th th:text="${elem.value}"/>
+            <th th:text="${elem.voltage}"/>
+            <th th:text="${elem.package_type}"/>
+            <th th:text="${elem.amount}"/>
+            <th th:text="${elem.note}"/>
+            <th th:text="${elem.section}"/>
+            <th>
+                <span>
+                    <button class="custom-button take-button">-</button>
+                    <button class="custom-button pick-button">+</button>
+                </span>
+            </th>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
