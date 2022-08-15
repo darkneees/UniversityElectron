@@ -20,4 +20,10 @@ public class IndexController {
         model.addAttribute("typeComponents", typeComponentService.getAllTypesComponents());
         return "index";
     }
+
+    @GetMapping("/add-component")
+    public String getAddComponentPage(Model model){
+        model.addAttribute("typeComponents", typeComponentService.getAllTypesComponents());
+        return "add-component";
+    }
 }

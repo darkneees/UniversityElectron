@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <th:block th:insert="header.html :: headerfiles"/>
+  <style th:href="@{styles/add-component.css}"></style>
+  <script th:src="@{js/bootstrapValidator.js}"></script>
+  <script th:src="@{js/add-component.js}"></script>
+  <title>Резисторы</title>
+</head>
+<body>
+
+<header th:insert="header.html :: header"></header>
+<meta id="_csrf" name="_csrf" th:content="${_csrf.token}"/>
+<meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>
+
+<div class="container">
+
+  <form class="well form-horizontal" action=" " method="post"  id="contact_form">
+    <fieldset>
+
+      <!-- Form Name -->
+      <legend><center><h2><b>Форма добавления компонента</b></h2></center></legend><br>
+
+      <div class="form-group">
+        <label>Выберите тип компонента</label>
+        <div class="selectContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+            <select id="selected_type" name="selected_type" class="form-control selectpicker">
+              <option value="unselected">Не выбрано</option>
+              <option th:each="elem: ${typeComponents}" th:value="${elem.key}" th:text="${elem.name}"/>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Text input-->
+
+      <div class="form-group">
+        <label>Наименование</label>
+        <div class="inputGroupContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input name="name" placeholder="Введите наименование..." class="form-control"  type="text">
+          </div>
+        </div>
+      </div>
+
+      <!-- Text input-->
+
+      <div class="form-group">
+        <label>Типоразмер</label>
+        <div class="inputGroupContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input name="package" placeholder="Введите типоразмер..." class="form-control"  type="text">
+          </div>
+        </div>
+      </div>
+
+      <!-- Text input-->
+
+      <div class="form-group">
+        <label>Количество</label>
+        <div class="inputGroupContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input name="amount" placeholder="Введите количество..." class="form-control"  type="text">
+          </div>
+        </div>
+      </div>
+
+      <!-- Text input-->
+
+      <div class="form-group">
+        <label>Примечание</label>
+        <div class="inputGroupContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input name="note" placeholder="Введите примечание..." class="form-control"  type="text">
+          </div>
+        </div>
+      </div>
+
+      <!-- Text input-->
+
+      <div class="form-group">
+        <label>Секция</label>
+        <div class="inputGroupContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input name="section" placeholder="Введите секцию..." class="form-control"  type="text">
+          </div>
+        </div>
+      </div>
+
+      <div id="torque_div" class="form-group">
+        <label>Момент</label>
+        <div class="inputGroupContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input id="torque" name="torque" placeholder="Введите момент..." class="form-control"  type="text">
+          </div>
+        </div>
+      </div>
+
+      <div id="current_div" class="form-group">
+        <label>Ток</label>
+        <div class="inputGroupContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input id="current" name="current" placeholder="Введите ток..." class="form-control"  type="text">
+          </div>
+        </div>
+      </div>
+
+      <div id="value_div" class="form-group">
+        <label>Номинал</label>
+        <div class="inputGroupContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input id="value" name="value" placeholder="Введите номинал..." class="form-control"  type="text">
+          </div>
+        </div>
+      </div>
+
+      <div id="voltage_div" class="form-group">
+        <label>Напряжение</label>
+        <div class="inputGroupContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input id="voltage" name="voltage" placeholder="Введите напряжение..." class="form-control"  type="text">
+          </div>
+        </div>
+      </div>
+
+      <div id="forward_voltage_div" class="form-group">
+        <label>Прямое напряжение</label>
+        <div class="inputGroupContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input id="forward_voltage" name="forward_voltage" placeholder="Введите прямое напряжение..." class="form-control"  type="text">
+          </div>
+        </div>
+      </div>
+
+      <div id="back_voltage_div" class="form-group">
+        <label>Обратное напряжение</label>
+        <div class="inputGroupContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input id="back_voltage" name="back_voltage" placeholder="Введите обратное напряжение..." class="form-control"  type="text">
+          </div>
+        </div>
+      </div>
+
+      <div id="channel_div" class="form-group">
+        <label>Тип канала</label>
+        <div class="inputGroupContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input id="channel" name="channel" placeholder="Введите тип канала..." class="form-control"  type="text">
+          </div>
+        </div>
+      </div>
+
+      <!-- Button -->
+      <div class="form-group">
+        <label class="col-md-4 control-label"></label>
+        <div class="col-md-4"><br>
+          <button type="submit" class="btn btn-warning">Добавить компонент<span class="glyphicon glyphicon-send"></span></button>
+        </div>
+      </div>
+
+    </fieldset>
+  </form>
+</div>
+
+</div>
+</body>
+</html>
