@@ -23,4 +23,14 @@ public abstract class AbstractService<E extends ComponentAbstract, R extends Com
     public void addComponent(E elem) {
         repository.save(elem);
     }
+
+    @Override
+    public void deleteComponent(E elem) {
+        repository.delete(elem);
+    }
+
+    @Override
+    public E getComponentById(Long id) {
+        return repository.findById(id).get();
+    }
 }

@@ -8,5 +8,7 @@ public interface CommonService <E extends ComponentAbstract> {
 
     List<E> getAllComponents();
     void addComponent(E elem);
+    void deleteComponent(E elem);
+    E getComponentById(Long id);
 
 }

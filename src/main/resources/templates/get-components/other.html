@@ -12,6 +12,7 @@
   <table class="table table-hover">
     <thead>
     <tr>
+      <th>Удаление</th>
       <th scope="col">№</th>
       <th scope="col">Наименование</th>
       <th scope="col">Номинал</th>
@@ -23,6 +24,11 @@
     </thead>
     <tbody>
     <tr th:each="elem: ${components}" >
+      <th>
+        <form th:method="delete" th:action="@{'/other/delete/' + ${elem.id}}">
+          <button type="submit" class="btn-sm custom-button remove-button">Удалить</button>
+        </form>
+      </th>
       <th th:text="${elem.id}"/>
       <th th:text="${elem.name}"/>
       <th th:text="${elem.value}"/>

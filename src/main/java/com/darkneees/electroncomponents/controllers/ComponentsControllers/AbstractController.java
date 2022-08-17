@@ -5,6 +5,7 @@ import com.darkneees.electroncomponents.service.CommonService;
 import com.darkneees.electroncomponents.service.components.TypeComponentServiceImpl;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
@@ -44,10 +45,14 @@ public class AbstractController <E extends ComponentAbstract, S extends CommonSe
     }
 
     @Override
-    public RedirectView addComponent(@ModelAttribute E element, Model model) {
-
+    public RedirectView addComponent(@ModelAttribute E element) {
         service.addComponent(element);
-        model.addAttribute("element", element);
-        return new RedirectView("/");
+        return new RedirectView("/" + name + "/add");
+    }
+
+    @Override
+    public RedirectView deleteComponent(@PathVariable("id") Long id) {
+        service.deleteComponent(service.getComponentById(id));
+        return new RedirectView("/" + name);
     }
 }
