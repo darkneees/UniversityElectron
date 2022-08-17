@@ -12,6 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class TransistorController extends AbstractController<Transistor, TransistorService> {
 
     protected TransistorController(TransistorService service, TypeComponentServiceImpl typeComponentService) {
-        super(service, typeComponentService, "transistor");
+        super(new Transistor(), service, typeComponentService, "transistor");
     }
 }

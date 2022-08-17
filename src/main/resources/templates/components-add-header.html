@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<th:block th:fragment="default">
+
+  <div class="form-group">
+    <label for="name">Наименование</label>
+    <div class="inputGroupContainer">
+      <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+        <input required id="name" name="name" placeholder="Введите наименование..." class="form-control"  type="text">
+        <div class="invalid-feedback">Пожалуйста, введите наименование!</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Text input-->
+
+  <div class="form-group">
+    <label for="package_type">Типоразмер</label>
+    <div class="inputGroupContainer">
+      <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+        <input required id="package_type" name="package_type" placeholder="Введите типоразмер..." class="form-control"  type="text">
+        <div class="invalid-feedback">Пожалуйста, введите типоразмер!</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Text input-->
+
+  <div class="form-group">
+    <label for="amount">Количество</label>
+    <div class="inputGroupContainer">
+      <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+        <input required id="amount" name="amount" placeholder="Введите количество..." class="form-control"  type="text"/>
+        <div class="invalid-feedback">Пожалуйста, введите количество!</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Text input-->
+
+  <div class="form-group">
+    <label>Примечание</label>
+    <div class="inputGroupContainer">
+      <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+        <input name="note" placeholder="Введите примечание..." class="form-control"  type="text">
+      </div>
+    </div>
+  </div>
+
+  <!-- Text input-->
+
+  <div class="form-group">
+    <label for="section">Секция</label>
+    <div class="inputGroupContainer">
+      <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+        <input required id="section" name="section" placeholder="Введите секцию..." class="form-control"  type="text">
+        <div class="invalid-feedback">Пожалуйста, введите секцию!</div>
+      </div>
+    </div>
+  </div>
+
+</th:block>
+
+</body>
+</html>

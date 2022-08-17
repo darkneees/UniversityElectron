@@ -10,6 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/pcb")
 public class PCBController extends AbstractController<PCB, PCBService> {
     protected PCBController(PCBService service, TypeComponentServiceImpl typeComponentService) {
-        super(service, typeComponentService, "pcb");
+        super(new PCB(), service, typeComponentService, "pcb");
     }
 }

@@ -12,6 +12,6 @@ public class OtherController extends AbstractController<Other, OtherService> {
 
 
     protected OtherController(OtherService service, TypeComponentServiceImpl typeComponentService) {
-        super(service, typeComponentService, "other");
+        super(new Other(), service, typeComponentService, "other");
     }
 }

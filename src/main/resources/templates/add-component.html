@@ -10,12 +10,11 @@
 <body>
 
 <header th:insert="header.html :: header"></header>
-<meta id="_csrf" name="_csrf" th:content="${_csrf.token}"/>
-<meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>
+
 
 <div class="container">
 
-  <form class="well form-horizontal" action=" " method="post"  id="contact_form">
+  <form class="well form-horizontal" th:action="@{/resistor}" method="post" id="contact_form">
     <fieldset>
 
       <!-- Form Name -->

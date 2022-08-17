@@ -11,6 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ServoController extends AbstractController<Servo, ServoService> {
 
     protected ServoController(ServoService service, TypeComponentServiceImpl typeComponentService) {
-        super(service, typeComponentService, "servo");
+        super(new Servo(), service, typeComponentService, "servo");
     }
 }

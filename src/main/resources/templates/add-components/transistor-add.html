@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <th:block th:insert="header.html :: headerfiles"/>
+  <style th:href="@{/styles/add-component.css}"></style>
+  <script th:src="@{/js/bootstrapValidator.js}"></script>
+  <script th:src="@{/js/add-component.js}"></script>
+  <title>Резисторы</title>
+</head>
+<body>
+
+<header th:insert="header.html :: header"></header>
+
+
+<div class="container">
+
+  <form class="well form-horizontal" th:object="${element}" th:action="@{/transistor/add}" method="post" id="contact_form">
+    <fieldset>
+
+      <!-- Form Name -->
+      <legend><center><h2><b>Форма добавления Транзистора</b></h2></center></legend><br>
+
+      <th:block th:insert="components-add-header.html :: default"/>
+
+      <div id="current_div" class="form-group">
+        <label>Ток</label>
+        <div class="inputGroupContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input required id="current" name="current" placeholder="Введите ток..." class="form-control"  type="text">
+          </div>
+        </div>
+      </div>
+
+      <div id="value_div" class="form-group">
+        <label>Номинал</label>
+        <div class="inputGroupContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input required id="value" name="value" placeholder="Введите номинал..." class="form-control"  type="text">
+          </div>
+        </div>
+      </div>
+
+      <div id="voltage_div" class="form-group">
+        <label>Напряжение</label>
+        <div class="inputGroupContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input required id="voltage" name="voltage" placeholder="Введите напряжение..." class="form-control"  type="text">
+          </div>
+        </div>
+      </div>
+
+      <div id="channel_div" class="form-group">
+        <label>Тип канала</label>
+        <div class="inputGroupContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input required id="channel" name="channel" placeholder="Введите тип канала..." class="form-control"  type="text">
+          </div>
+        </div>
+      </div>
+
+      <!-- Button -->
+      <div class="form-group">
+        <label class="col-md-4 control-label"></label>
+        <div class="col-md-4"><br>
+          <button type="submit" class="btn btn-warning">Добавить компонент<span class="glyphicon glyphicon-send"></span></button>
+        </div>
+      </div>
+
+    </fieldset>
+  </form>
+</div>
+
+</div>
+</body>
+</html>

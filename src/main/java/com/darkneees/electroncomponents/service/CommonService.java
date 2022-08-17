@@ -7,5 +7,6 @@ import java.util.List;
 public interface CommonService <E extends ComponentAbstract> {
 
     List<E> getAllComponents();
+    void addComponent(E elem);
 
 }

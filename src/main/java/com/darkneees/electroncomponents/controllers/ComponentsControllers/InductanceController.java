@@ -12,6 +12,6 @@ public class InductanceController extends AbstractController<Inductance, Inducta
 
 
     protected InductanceController(InductanceService service, TypeComponentServiceImpl typeComponentService) {
-        super(service, typeComponentService, "inductance");
+        super(new Inductance(), service, typeComponentService, "inductance");
     }
 }

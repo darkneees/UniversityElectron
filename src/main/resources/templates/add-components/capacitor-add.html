@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:insert="header.html :: headerfiles"/>
+    <style th:href="@{/styles/add-component.css}"></style>
+<!--    <script th:src="@{/js/bootstrapValidator.js}"></script>-->
+    <script th:src="@{/js/add-component.js}"></script>
+    <title>Резисторы</title>
+</head>
+<body>
+
+<header th:insert="header.html :: header"></header>
+
+
+<div class="container">
+
+    <form class="well form-horizontal"
+          th:object="${element}" th:action="@{/capacitor/add}" method="post" id="contact_form">
+        <fieldset>
+
+            <!-- Form Name -->
+            <legend><center><h2><b>Форма добавления конденсатора</b></h2></center></legend><br>
+
+            <th:block th:insert="components-add-header.html :: default"/>
+
+
+            <div id="value_div" class="form-group">
+                <label for="value">Номинал</label>
+                <div class="inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input required id="value" name="value" placeholder="Введите номинал..." class="form-control"  type="text">
+                        <div class="invalid-feedback">Пожалуйста, введите номинал!</div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="voltage_div" class="form-group">
+                <label for="voltage">Напряжение</label>
+                <div class="inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input required id="voltage" name="voltage" placeholder="Введите напряжение..." class="form-control"  type="text">
+                        <div class="invalid-feedback">Пожалуйста, введите напряжение!</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Button -->
+            <div class="form-group">
+                <label class="col-md-4 control-label"></label>
+                <div class="col-md-4"><br>
+                    <input id="input-button" value="Добавить компонент" type="submit" class="btn btn-warning"/>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+</div>
+
+</div>
+</body>
+</html>

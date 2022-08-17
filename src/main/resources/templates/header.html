@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:fragment="headerfiles">
-    <script th:src="@{js/jquery-3.6.0.min.js}"></script>
-    <link media="all" type="text/css" th:href="@{styles/bootstrap.css}" rel="stylesheet"/>
-    <link th:href="@{styles/index.css}" rel="stylesheet"/>
-    <script th:src="@{js/index.js}"></script>
+    <script th:src="@{/js/jquery-3.6.0.min.js}"></script>
+    <link media="all" type="text/css" th:href="@{/styles/bootstrap.css}" rel="stylesheet"/>
+    <link th:href="@{/styles/index.css}" rel="stylesheet"/>
+    <script th:src="@{/js/index.js}"></script>
     <meta charset="UTF-8">
     <title>Электрические компоненты</title>
 </head>
@@ -14,15 +14,21 @@
         <span class="main-title my-container">
 
         <div class="dropdown">
-            <button onclick="myFunction()" class="dropbtn">Компоненты</button>
-            <div id="myDropdown" class="dropdown-content">
-                <a th:each="c : ${typeComponents}" th:href="${c.key}" th:text="${c.name}"/>
+            <button onclick="drop_pages()" class="dropbtn functiondropbtn">Компоненты</button>
+            <div id="dropdown-pages" class="dropdown-content">
+                <a th:each="c : ${typeComponents}" th:href="${'/' + c.key}" th:text="${c.name}"/>
             </div>
         </div>
         <form>
             <input type="text" id="item-search" name="item=search" placeholder="Введите название предмета">
         </form>
-        <a th:href="@{/add-component}" class="btn custom-button add-button">Добавить компонент</a>
+
+        <div class="dropdown">
+            <button onclick="drop_links()" class="functiondropbtn btn custom-button add-button">Добавить компонент</button>
+            <div id="dropdown-links" class="dropdown-content">
+                <a th:each="c : ${typeComponents}" th:href="${'/' + c.key + '/add'}" th:text="${c.name}"/>
+            </div>
+        </div>
         <a class="btn custom-button remove-button">Удалить компонент</a>
 
         </span>

@@ -18,4 +18,9 @@ public abstract class AbstractService<E extends ComponentAbstract, R extends Com
     public List<E> getAllComponents() {
         return (List<E>) repository.findAll();
     }
+
+    @Override
+    public void addComponent(E elem) {
+        repository.save(elem);
+    }
 }

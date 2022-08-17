@@ -12,6 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class CapacitorController extends AbstractController<Capacitor, CapacitorService> {
 
     protected CapacitorController(CapacitorService service, TypeComponentServiceImpl typeComponentService) {
-        super(service, typeComponentService, "capacitor");
+        super(new Capacitor(), service, typeComponentService, "capacitor");
     }
 }

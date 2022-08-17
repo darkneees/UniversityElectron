@@ -11,6 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class DiodeController extends AbstractController<Diode, DiodeService> {
 
     protected DiodeController(DiodeService service, TypeComponentServiceImpl typeComponentService) {
-        super(service, typeComponentService, "diode");
+        super(new Diode(), service, typeComponentService, "diode");
     }
 }
