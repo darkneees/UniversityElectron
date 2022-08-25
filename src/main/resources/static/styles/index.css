@@ -241,4 +241,6 @@ form {
     background-size: 15px 100%;
 }
 
-
+.custom-text {
+    width: 10%;
+}

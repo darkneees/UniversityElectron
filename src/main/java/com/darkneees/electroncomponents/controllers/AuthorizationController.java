@@ -33,20 +33,4 @@ public class AuthorizationController {
         return new RedirectView("/login");
     }
 
-    @GetMapping("/register")
-    public String getRegisterPage(){ return "register";}
-
-    @PostMapping("/register")
-    public RedirectView registerNewUser(@RequestParam("username") String username,
-                                        @RequestParam("password") String password){
-
-        User user = new User();
-        user.setUsername(username);
-        user.setPassword(passwordEncoder.encode(password));
-        user.setRoles(Collections.singleton(new Role(1L, "ADMIN")));
-        userService.AddUser(user);
-        return new RedirectView("/login");
-
-    }
-
 }

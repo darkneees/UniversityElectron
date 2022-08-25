@@ -33,4 +33,19 @@ public abstract class AbstractService<E extends ComponentAbstract, R extends Com
     public E getComponentById(Long id) {
         return repository.findById(id).get();
     }
+
+    @Override
+    public int changeAmountComponents(Long id, int amount) {
+        E element = getComponentById(id);
+        int result_amount = element.getAmount() + amount;
+        if(result_amount >= 0) {
+
+            element.setAmount(element.getAmount() + amount);
+            int change_amount = element.getAmount();
+            repository.save(element);
+            return change_amount;
+
+        } else return -1;
+
+    }
 }

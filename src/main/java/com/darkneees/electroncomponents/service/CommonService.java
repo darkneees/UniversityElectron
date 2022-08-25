@@ -10,5 +10,6 @@ public interface CommonService <E extends ComponentAbstract> {
     void addComponent(E elem);
     void deleteComponent(E elem);
     E getComponentById(Long id);
+    int changeAmountComponents(Long id, int amount);
 
 }

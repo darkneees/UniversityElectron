@@ -22,7 +22,7 @@
       <th scope="col">Секция</th>
     </tr>
     </thead>
-    <tbody>
+    <tbody id="table-components">
     <tr th:each="elem: ${components}" >
       <th>
         <form th:method="delete" th:action="@{'/servo/delete/' + ${elem.id}}">
@@ -38,8 +38,8 @@
       <th th:text="${elem.section}"/>
       <th>
                 <span>
-                    <button class="custom-button take-button">-</button>
-                    <button class="custom-button pick-button">+</button>
+                    <button th:attr="data-url=@{'/servo/amount/' + ${elem.id}}"  class="custom-button take-button">-</button>
+                    <button th:attr="data-url=@{'/servo/amount/' + ${elem.id}}"  class="custom-button pick-button">+</button>
                 </span>
       </th>
     </tr>

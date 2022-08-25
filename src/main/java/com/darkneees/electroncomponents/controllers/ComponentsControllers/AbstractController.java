@@ -3,12 +3,14 @@ package com.darkneees.electroncomponents.controllers.ComponentsControllers;
 import com.darkneees.electroncomponents.entity.Components.ComponentAbstract;
 import com.darkneees.electroncomponents.service.CommonService;
 import com.darkneees.electroncomponents.service.components.TypeComponentServiceImpl;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
+import java.util.Map;
 
 public class AbstractController <E extends ComponentAbstract, S extends CommonService<E>> implements CommonController<E> {
 
@@ -54,5 +56,16 @@ public class AbstractController <E extends ComponentAbstract, S extends CommonSe
     public RedirectView deleteComponent(@PathVariable("id") Long id) {
         service.deleteComponent(service.getComponentById(id));
         return new RedirectView("/" + name);
+    }
+
+    @Override
+    public ResponseEntity<Object> changeAmountComponent(@PathVariable("id")Long id, @RequestParam("amount") Integer amount) {
+        int change_amount = service.changeAmountComponents(id, amount);
+        if(change_amount == -1) {
+
+            return new ResponseEntity<>(new Error(), HttpStatus.BAD_REQUEST);
+        }
+        else return new ResponseEntity<>(Map.of("amount", String.valueOf(change_amount)), HttpStatus.OK);
+
     }
 }
