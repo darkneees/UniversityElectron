@@ -24,4 +24,9 @@ public class TypeComponentServiceImpl implements TypeComponentService {
     public void addTypeComponent(TypeComponent component) {
         repository.save(component);
     }
+
+    @Override
+    public void addListComponents(List<TypeComponent> components) {
+        repository.saveAll(components);
+    }
 }

@@ -1,0 +1,18 @@
+version: "3"
+services:
+
+  server:
+    build: ./
+    container_name: 'universityelectron_server'
+    ports:
+      - 8080:8080
+
+  mariadb:
+    image: 'mariadb:10.5'
+    container_name: 'mariadb-compose'
+    environment:
+      - 'MYSQL_DATABASE=electroncomponents'
+      - 'MYSQL_PASSWORD=root'
+      - 'MYSQL_ROOT_PASSWORD=root'
+    ports:
+      - 3306:3306

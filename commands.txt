@@ -1,0 +1,10 @@
+docker search mariadb
+docker pull mariadb:10.5
+docker run -d -e MARIADB_ROOT_PASSWORD=root -p 3306:3306 mariadb:10.5
+docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' container-id
+mysql -h 127.0.0.1 -P 3306 --protocol=TCP -u root -p
+docker exec -it mariadb bash                 
+
+
+git clone fjdlkfldkgldg    
+docker build . --tag name:1.0.0                                                       
