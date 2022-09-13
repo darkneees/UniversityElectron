@@ -37,13 +37,14 @@
       <th th:text="${elem.forward_voltage}"/>
       <th th:text="${elem.back_voltage}"/>
       <th th:text="${elem.package_type}"/>
-      <th th:text="${elem.amount}"/>
+      <th th:name="amount" th:text="${elem.amount}"/>
       <th th:text="${elem.note}"/>
       <th th:text="${elem.section}"/>
       <th>
                 <span>
                     <button th:attr="data-url=@{'/diode/amount/' + ${elem.id}}"  class="custom-button take-button">-</button>
                     <button th:attr="data-url=@{'/diode/amount/' + ${elem.id}}"  class="custom-button pick-button">+</button>
+                    <input class="amount-elements text form-text custom-text" type="text">
                 </span>
       </th>
     </tr>

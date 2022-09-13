@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <th:block th:insert="header.html :: headerfiles"/>
-    <title>Конденсаторы</title>
+    <title>Транзисторы</title>
 </head>
 <body>
 
@@ -37,13 +37,14 @@
             <th th:text="${elem.current}"/>
             <th th:text="${elem.voltage}"/>
             <th th:text="${elem.package_type}"/>
-            <th th:text="${elem.amount}"/>
+            <th th:name="amount" th:text="${elem.amount}"/>
             <th th:text="${elem.note}"/>
             <th th:text="${elem.section}"/>
             <th>
                 <span>
                     <button th:attr="data-url=@{'/transistor/amount/' + ${elem.id}}"  class="custom-button take-button">-</button>
                     <button th:attr="data-url=@{'/transistor/amount/' + ${elem.id}}"  class="custom-button pick-button">+</button>
+                    <input class="amount-elements text form-text custom-text" type="text">
                 </span>
             </th>
         </tr>
