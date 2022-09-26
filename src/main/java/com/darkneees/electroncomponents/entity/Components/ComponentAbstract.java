@@ -25,11 +25,6 @@ public abstract class ComponentAbstract implements Serializable {
 
     @Column(name = "section")
     private String section;
-
-    public Long getId() {
-        return id;
-    }
-
     public String getName() {
         return name;
     }
@@ -69,4 +64,9 @@ public abstract class ComponentAbstract implements Serializable {
     public void setSection(String section) {
         this.section = section;
     }
+
+    public Long getId() {
+        return id;
+    }
+
 }

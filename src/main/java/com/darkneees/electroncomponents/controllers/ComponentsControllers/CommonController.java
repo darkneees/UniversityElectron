@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.Map;
+import java.util.concurrent.CompletableFuture;
 
 public interface CommonController <E extends ComponentAbstract> {
 
@@ -14,15 +15,17 @@ public interface CommonController <E extends ComponentAbstract> {
     String getPage(Model model);
 
     @GetMapping("/add")
-    String getPageAdd(Model model);
+    CompletableFuture<String> getPageAdd(Model model);
 
     @PostMapping("/add")
-    RedirectView addComponent(@ModelAttribute E element);
+    CompletableFuture<RedirectView> addComponent(@ModelAttribute E element);
 
     @PostMapping("/delete/{id}")
-    RedirectView deleteComponent(@PathVariable("id") Long id);
+    CompletableFuture<RedirectView> deleteComponent(@PathVariable("id") Long id);
 
     @PostMapping("/amount/{id}")
     @ResponseBody
-    ResponseEntity<Object> changeAmountComponent(@PathVariable("id") Long id, @RequestParam("amount") Integer amount);
+    CompletableFuture<ResponseEntity<Object>>changeAmountComponent(
+            @PathVariable("id") Long id,
+            @RequestParam("amount") Integer amount);
 }

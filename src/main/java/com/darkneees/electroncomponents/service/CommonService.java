@@ -3,13 +3,14 @@ package com.darkneees.electroncomponents.service;
 import com.darkneees.electroncomponents.entity.Components.ComponentAbstract;
 
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 public interface CommonService <E extends ComponentAbstract> {
 
-    List<E> getAllComponents();
-    void addComponent(E elem);
-    void deleteComponent(E elem);
-    E getComponentById(Long id);
-    int changeAmountComponents(Long id, int amount);
+    CompletableFuture<List<E>> getAllComponents();
+    CompletableFuture<Void> addComponent(E elem);
+    CompletableFuture<Void> deleteComponent(Long elem);
+    CompletableFuture<E> getComponentByName(Long name);
+    CompletableFuture<Integer> changeAmountComponents(Long name, int amount);
 
 }

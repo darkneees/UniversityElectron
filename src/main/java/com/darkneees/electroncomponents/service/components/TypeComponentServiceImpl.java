@@ -5,6 +5,7 @@ import com.darkneees.electroncomponents.repository.TypeComponentRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 @Service
 public class TypeComponentServiceImpl implements TypeComponentService {
@@ -16,8 +17,8 @@ public class TypeComponentServiceImpl implements TypeComponentService {
     }
 
     @Override
-    public List<TypeComponent> getAllTypesComponents() {
-        return repository.findAll();
+    public CompletableFuture<List<TypeComponent>> getAllTypesComponents() {
+        return CompletableFuture.completedFuture(repository.findAll());
     }
 
     @Override
