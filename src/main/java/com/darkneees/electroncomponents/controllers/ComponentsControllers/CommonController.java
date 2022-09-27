@@ -6,13 +6,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
-import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 public interface CommonController <E extends ComponentAbstract> {
 
     @GetMapping
-    String getPage(Model model);
+    CompletableFuture<String> getPage(Model model);
 
     @GetMapping("/add")
     CompletableFuture<String> getPageAdd(Model model);

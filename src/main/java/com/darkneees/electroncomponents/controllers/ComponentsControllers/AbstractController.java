@@ -17,13 +17,10 @@ import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 public class AbstractController <E extends ComponentAbstract, S extends CommonService<E>> implements CommonController<E> {
-
-
     private final E element;
     private final S service;
     private final TypeComponentServiceImpl typeComponentService;
     private final String name;
-
 
     protected AbstractController(E element, S service, TypeComponentServiceImpl typeComponentService, String name) {
         this.service = service;
@@ -33,7 +30,7 @@ public class AbstractController <E extends ComponentAbstract, S extends CommonSe
     }
 
     @Override
-    public String getPage(Model model) {
+    public CompletableFuture<String> getPage(Model model) {
         return service.getAllComponents()
                 .thenApply((components) -> {
 
@@ -43,7 +40,7 @@ public class AbstractController <E extends ComponentAbstract, S extends CommonSe
                             list);
 
                     return "get-components/" + name;
-                }).join();
+                });
     }
 
     @Override

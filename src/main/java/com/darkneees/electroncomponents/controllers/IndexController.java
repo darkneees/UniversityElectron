@@ -6,6 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.concurrent.CompletableFuture;
+
 @Controller
 @RequestMapping("/")
 public class IndexController {
@@ -15,15 +17,21 @@ public class IndexController {
     }
 
     @GetMapping("/")
-    public String getMainPage(Model model) {
+    public CompletableFuture<String> getMainPage(Model model) {
 
-        model.addAttribute("typeComponents", typeComponentService.getAllTypesComponents());
-        return "index";
+        return typeComponentService.getAllTypesComponents()
+                .thenApply((element) -> {
+                    model.addAttribute("typeComponents", element);
+                    return "index";
+                });
     }
 
     @GetMapping("/add-component")
-    public String getAddComponentPage(Model model){
-        model.addAttribute("typeComponents", typeComponentService.getAllTypesComponents());
-        return "add-component";
+    public CompletableFuture<String> getAddComponentPage(Model model){
+        return typeComponentService.getAllTypesComponents()
+                .thenApply((element) -> {
+                    model.addAttribute("typeComponents", typeComponentService.getAllTypesComponents());
+                    return "add-component";
+                });
     }
 }
