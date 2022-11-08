@@ -8,7 +8,7 @@ import java.util.concurrent.CompletableFuture;
 public interface TypeComponentService {
 
     CompletableFuture<List<TypeComponent>> getAllTypesComponents();
-    void addTypeComponent(TypeComponent typeComponent);
-    void addListComponents(List<TypeComponent> components);
+    CompletableFuture<TypeComponent> addTypeComponent(TypeComponent typeComponent);
+    CompletableFuture<List<TypeComponent>> addListComponents(List<TypeComponent> components);
 
 }

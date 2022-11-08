@@ -18,7 +18,6 @@ public class IndexController {
 
     @GetMapping("/")
     public CompletableFuture<String> getMainPage(Model model) {
-
         return typeComponentService.getAllTypesComponents()
                 .thenApply((element) -> {
                     model.addAttribute("typeComponents", element);

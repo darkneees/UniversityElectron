@@ -1,8 +1,8 @@
 package com.darkneees.electroncomponents.service.components;
 
 
-import com.darkneees.electroncomponents.entity.Components.Servo;
-import com.darkneees.electroncomponents.repository.Components.ServoRepository;
+import com.darkneees.electroncomponents.entity.components.Servo;
+import com.darkneees.electroncomponents.repository.components.ServoRepository;
 import com.darkneees.electroncomponents.service.AbstractService;
 import org.springframework.stereotype.Service;
 

@@ -27,7 +27,7 @@ public class SecurityConfig{
     @Bean
     public UserDetailsService userDetailsService() {
         return username -> {
-            User user = userService.findByUsername(username);
+            User user = userService.findByUsername(username).join();
             if (user != null) return user;
             throw new UsernameNotFoundException("User ‘" + username + "’ not found");
         };
@@ -39,9 +39,7 @@ public class SecurityConfig{
         return http.authorizeRequests()
                 .antMatchers("/index").hasRole("ADMIN")
                 .antMatchers("/styles/*", "/js/*").permitAll()
-                .antMatchers("/register").permitAll()
                 .anyRequest().authenticated().and()
                 .formLogin().loginPage("/login").defaultSuccessUrl("/resistor").permitAll().and().build();
     }
-
 }

@@ -1,7 +1,7 @@
 package com.darkneees.electroncomponents.service.components;
 
-import com.darkneees.electroncomponents.entity.Components.Transistor;
-import com.darkneees.electroncomponents.repository.Components.TransistorRepository;
+import com.darkneees.electroncomponents.entity.components.Transistor;
+import com.darkneees.electroncomponents.repository.components.TransistorRepository;
 import com.darkneees.electroncomponents.service.AbstractService;
 import org.springframework.stereotype.Service;
 

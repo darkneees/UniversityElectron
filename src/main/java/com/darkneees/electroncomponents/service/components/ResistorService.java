@@ -1,8 +1,8 @@
 package com.darkneees.electroncomponents.service.components;
 
 
-import com.darkneees.electroncomponents.entity.Components.Resistor;
-import com.darkneees.electroncomponents.repository.Components.ResistorRepository;
+import com.darkneees.electroncomponents.entity.components.Resistor;
+import com.darkneees.electroncomponents.repository.components.ResistorRepository;
 import com.darkneees.electroncomponents.service.AbstractService;
 import org.springframework.stereotype.Service;
 

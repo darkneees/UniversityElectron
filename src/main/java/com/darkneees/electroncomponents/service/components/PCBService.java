@@ -1,7 +1,7 @@
 package com.darkneees.electroncomponents.service.components;
 
-import com.darkneees.electroncomponents.entity.Components.PCB;
-import com.darkneees.electroncomponents.repository.Components.PCBRepository;
+import com.darkneees.electroncomponents.entity.components.PCB;
+import com.darkneees.electroncomponents.repository.components.PCBRepository;
 import com.darkneees.electroncomponents.service.AbstractService;
 import org.springframework.stereotype.Service;
 

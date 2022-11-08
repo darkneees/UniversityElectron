@@ -7,19 +7,18 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import java.util.concurrent.Executor;
 
-@EnableAsync(proxyTargetClass = true)
 @Configuration
+@EnableAsync(proxyTargetClass = true)
 public class AsyncConfiguration {
 
-    @Bean(name = "taskExecutor")
-    public Executor taskExecutor(){
-        final ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
-        executor.setCorePoolSize(4);
-        executor.setMaxPoolSize(20);
-        executor.setQueueCapacity(100);
-        executor.setThreadNamePrefix("University-");
-        executor.initialize();
 
+    @Bean("taskExecutor")
+    public Executor taskExecutor(){
+        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
+        executor.setCorePoolSize(4);
+        executor.setMaxPoolSize(4);
+        executor.setQueueCapacity(500);
+        executor.setThreadNamePrefix("UniversityElectron-");
         return executor;
     }
 }

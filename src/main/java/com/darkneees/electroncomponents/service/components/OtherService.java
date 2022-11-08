@@ -1,7 +1,7 @@
 package com.darkneees.electroncomponents.service.components;
 
-import com.darkneees.electroncomponents.entity.Components.Other;
-import com.darkneees.electroncomponents.repository.Components.OtherRepository;
+import com.darkneees.electroncomponents.entity.components.Other;
+import com.darkneees.electroncomponents.repository.components.OtherRepository;
 import com.darkneees.electroncomponents.service.AbstractService;
 import org.springframework.stereotype.Service;
 
