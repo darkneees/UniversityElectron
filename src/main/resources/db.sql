@@ -8,7 +8,7 @@ INSERT INTO type_components (key_name, name) VALUES ('inductance', 'Индукт
 INSERT INTO type_components (key_name, name) VALUES ('other', 'Прочее');
 INSERT INTO type_components (key_name, name) VALUES ('pcb', 'Ис, платы и модули');
 
-INSERT INTO Resistors (name, value, package, amount, section)
+INSERT INTO Capacitors (name, value, package, amount, section)
 VALUES ('Резистор чип, 0,125Вт, 1%', '1,5 кОм', 'smd0805', 14, '1');
 
 

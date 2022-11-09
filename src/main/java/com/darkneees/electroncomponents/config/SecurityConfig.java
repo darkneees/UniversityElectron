@@ -32,14 +32,12 @@ public class SecurityConfig{
             throw new UsernameNotFoundException("User ‘" + username + "’ not found");
         };
     }
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         return http.authorizeRequests()
-                .antMatchers("/index").hasRole("ADMIN")
                 .antMatchers("/styles/*", "/js/*").permitAll()
                 .anyRequest().authenticated().and()
-                .formLogin().loginPage("/login").defaultSuccessUrl("/resistor").permitAll().and().build();
+                .formLogin().loginPage("/login").defaultSuccessUrl("/").permitAll().and().build();
     }
 }
