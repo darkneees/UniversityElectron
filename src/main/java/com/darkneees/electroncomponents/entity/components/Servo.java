@@ -33,4 +33,12 @@ public class Servo extends ComponentAbstract {
     public void setCurrent(String current) {
         this.current = current;
     }
+
+    @Override
+    public String toString() {
+        return "Servo{" +
+                "torque='" + torque + '\'' +
+                ", current='" + current + '\'' +
+                "} " + super.toString();
+    }
 }

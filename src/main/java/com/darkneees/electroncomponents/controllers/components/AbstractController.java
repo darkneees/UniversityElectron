@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,7 +34,8 @@ public class AbstractController <E extends ComponentAbstract, S extends CommonSe
     }
 
     @Override
-    public CompletableFuture<String> getPage(Model model) {
+    public CompletableFuture<String> getPage(Model model, Authentication authentication) {
+        log.info("User with username: {}, visited page with components {}", authentication.getName(), name);
         return service.getAllComponents()
                 .thenApply((components) -> {
                     List<TypeComponent> list = typeComponentService.getAllTypesComponents().join();
@@ -46,7 +48,8 @@ public class AbstractController <E extends ComponentAbstract, S extends CommonSe
     }
 
     @Override
-    public CompletableFuture<String> getPageAdd(Model model) {
+    public CompletableFuture<String> getPageAdd(Model model, Authentication authentication) {
+        log.info("User with username {} visited page for add component with type {}", authentication.getName(), name);
         return CompletableFuture.supplyAsync(() -> {
             model.addAttribute("element", element);
             model.addAttribute("typeComponents", typeComponentService.getAllTypesComponents().join());
@@ -55,23 +58,33 @@ public class AbstractController <E extends ComponentAbstract, S extends CommonSe
     }
 
     @Override
-    public CompletableFuture<RedirectView> addComponent(@ModelAttribute E element) {
-        return service.addComponent(element).thenApply((u) -> new RedirectView("/" + name + "/add"));
+    public CompletableFuture<RedirectView> addComponent(@ModelAttribute E element, Authentication authentication) {
+        return service.addComponent(element).thenApply((u) -> {
+            log.info("User with username {} add next component: {}", authentication.getName(), u.toString());
+            return new RedirectView("/" + name + "/add");
+        });
     }
 
     @Override
-    public CompletableFuture<RedirectView> deleteComponent(@PathVariable("id") Long id) {
-        return service.deleteComponent(id).thenApply((u) -> new RedirectView("/" + name));
+    public CompletableFuture<RedirectView> deleteComponent(@PathVariable("id") Long id, Authentication authentication) {
+        return service.deleteComponent(id).thenApply((u) -> {
+            log.info("User with username {} delete component with id: {}, type component: {}", authentication.getName(), id, name);
+            return new RedirectView("/" + name);
+        });
 
     }
 
     @Override
     public CompletableFuture<ResponseEntity<Object>> changeAmountComponent(
             @PathVariable("id") Long id,
-            @RequestParam("amount") Integer amount) {
+            @RequestParam("amount") Integer amount,
+            Authentication authentication) {
         return service.changeAmountComponents(id, amount).thenApply((change_amount) -> {
             if(change_amount == -1) return new ResponseEntity<>(new Error(), HttpStatus.BAD_REQUEST);
-            else return new ResponseEntity<>(Map.of("amount", String.valueOf(change_amount)), HttpStatus.OK);
+            else {
+                log.info("User with username {} changed amount in component with id: {}, type component: {}", id, amount, name);
+                return new ResponseEntity<>(Map.of("amount", String.valueOf(change_amount)), HttpStatus.OK);
+            }
         });
 
     }

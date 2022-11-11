@@ -44,4 +44,13 @@ public class Diode extends ComponentAbstract {
     public void setBack_voltage(String back_voltage) {
         this.back_voltage = back_voltage;
     }
+
+    @Override
+    public String toString() {
+        return "Diode{" +
+                "current='" + current + '\'' +
+                ", forward_voltage='" + forward_voltage + '\'' +
+                ", back_voltage='" + back_voltage + '\'' +
+                "} " + super.toString();
+    }
 }

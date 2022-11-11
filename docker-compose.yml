@@ -6,6 +6,8 @@ services:
     container_name: 'universityelectron_server'
     ports:
       - 8080:8080
+    volumes:
+      - ./logs:/host/logs
 
   mariadb:
     image: 'mariadb:10.5'
@@ -16,3 +18,8 @@ services:
       - 'MYSQL_ROOT_PASSWORD=root'
     ports:
       - 3306:3306
+    volumes:
+      - electroncomponents-db:/var/lib/mariadb
+
+volumes:
+   electroncomponents-db:

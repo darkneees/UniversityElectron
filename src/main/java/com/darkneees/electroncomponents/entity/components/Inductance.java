@@ -33,4 +33,12 @@ public class Inductance extends ComponentAbstract {
     public void setCurrent(String current) {
         this.current = current;
     }
+
+    @Override
+    public String toString() {
+        return "Inductance{" +
+                "value='" + value + '\'' +
+                ", current='" + current + '\'' +
+                "} " + super.toString();
+    }
 }

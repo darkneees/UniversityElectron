@@ -69,4 +69,15 @@ public abstract class ComponentAbstract implements Serializable {
         return id;
     }
 
+    @Override
+    public String toString() {
+        return "ComponentAbstract{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", package_type='" + package_type + '\'' +
+                ", amount=" + amount +
+                ", note='" + note + '\'' +
+                ", section='" + section + '\'' +
+                '}';
+    }
 }

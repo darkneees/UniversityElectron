@@ -32,4 +32,12 @@ public class Capacitor extends ComponentAbstract {
     public void setVoltage(String voltage) {
         this.voltage = voltage;
     }
+
+    @Override
+    public String toString() {
+        return "Capacitor{" +
+                "value='" + value + '\'' +
+                ", voltage='" + voltage + '\'' +
+                "} " + super.toString();
+    }
 }

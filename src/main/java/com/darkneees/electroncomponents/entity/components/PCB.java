@@ -18,4 +18,11 @@ public class PCB extends ComponentAbstract {
     public void setValue(String value) {
         this.value = value;
     }
+
+    @Override
+    public String toString() {
+        return "PCB{" +
+                "value='" + value + '\'' +
+                "} " + super.toString();
+    }
 }

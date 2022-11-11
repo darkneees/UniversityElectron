@@ -43,4 +43,13 @@ public class Transistor extends ComponentAbstract {
     public void setVoltage(String voltage) {
         this.voltage = voltage;
     }
+
+    @Override
+    public String toString() {
+        return "Transistor{" +
+                "channel='" + channel + '\'' +
+                ", current='" + current + '\'' +
+                ", voltage='" + voltage + '\'' +
+                "} " + super.toString();
+    }
 }
